@@ -1,0 +1,219 @@
+Before cloud 
+============
+
+we have an application , need to deploy in production (live)
+
+-> Buy servers (2) 
+-> The traffic more , keeping peak traffic in mind , we need to buy mmore servers
+-> Monitor and Maintain the servers
+-> This setup expensive
+-> if No traffic , your servers will be in idle
+
+Q.what is cloud ?
+=================
+It is the use of remote servers on the internet to store ,manage and process data rather than a local server (physical server/ personel computer)  
+
+
+post your application or data on cloud servers (EC2) No more buying expensive servers .
+scalability : your server capacity will vary according to the incoming traffic .
+your cloud (aws/azure/google cloud) provider will manage your server.
+
+cloud computing services provides by AWS/Azure/Google Cloud
+
+why AWS ?
+========
+-> serer capacity   
+-> AWS Global cloud computing market share
+-> Flexible pricing
+
+AWS is secure cloud services plotform for offering compute services,databse storgae,content delivery and other functionality to help business scale and grow .
+
+we have Domains in the AWS 
+==========================
+compute,storage,security and identity compilience ,Networking and content Delivery etc
+
+
+compute
+========
+
+EC2,lambda,Elastic Beanstalk,Elastic load Balancer,Auto Scaling  
+
+
+EC2
+
+Amazon "Elastic Compute is a virtual server in  Cloud (EC2) for running applications on the aws .
+
+lambda
+======
+ 
+It is used for execute background tasks for your application. ex upload file it should be store in the file system. 
+
+upload an image to s3
+s3 triggers an event abd this event is a lambda function'
+lambda function takes this image and then encode the image , when an image is encoded it gets stored in s3
+the lambda might trigger other lambda event whic us returning image location back to the user
+
+Elastic Bean Stalk
+==================
+The Difference between lambda and elastic bean stalk is EBS is used to host your application.
+with Elastic bean stalk you no need to configure all the details or no need to set environment manually. we just select an environment do you want and aws will install all the configuration files required for you . you just have to uploda your code thats it.
+
+Elastic load Balancer
+====================
+
+Elastic load Balancer is basically used to dstribute your workload among a number of instances .so the traffic which will be coming on to these instances has to be distributed equally.
+
+Auto Scaling  
+==============
+
+Autoscaling is a service which is used to scale up and down automatically witout your interaction . we need to set 
+ metrics
+ usecase :
+ suppose we have a website running on aws this website running on 5 servers . we have configured a metrix that whenever combined CPU usage goes beyond 70% launch new server (new instance) .then the traffic will be distributed among 6 servers by autoscaling.
+
+
+ Storage devices
+ ================
+
+ s3,cloudfront,Elastic Block Storage,Glacier,snowBall and stoarge gateway
+
+s3
+===
+ Simple storage Service , S3 is a file system and it is object oriented file system , which is basically means that all your files that you upload on s3 are treated as object and these objects have to be buckets . we can consider bucket is folder
+ we cannot store files directly into the file system, we have to create a bucket and inside bucket we can any number folders 
+
+cloudfront
+=========
+
+ Cloud front is content delivery network so it is a caging service.A user wants to connect a website which is far from user's location that website can be caged to loaction which is near to the user and from that loaction the user can access the website .
+ why would we do this , Because its response time becomes less .
+
+
+EBS (Elastic Block Storage)
+ =========================
+
+ It is basically a hard drive to EC2 instance.
+ when you are using EC2 instance,obviously your operation system or software being stored in some where.
+ EC2 is backed by EBS for this reason EBS act as Hard drive for EC2 . EBS cannot used as independently it has to be used with EC2 only.
+ 
+ Glacier
+ =======
+ to take backup data from S3 and EC2
+
+ SnowBall
+ ========
+ physical transfer of data from aws/ to aws infrastructure .
+ 
+ 
+ stoarge gateway
+ ===============
+
+ Storage gateway is a service which is used between your data center and cloud .suppose we have database servers and application servers , storage gateway will sit in between database server and application server and it will keep on taking snapshots of your DB will keep on storing it into s3 bucket .
+ let' say we have 3 or 4 Database servers and 4th database gets correpted because of some reason , now storage gateway will recognize that failure has happened and send it through an email or notication.
+
+
+Database Services
+==================
+
+RDS, Aurora, DynamoDB, Elastic cache,Redshift
+
+
+RDS  
+===
+
+Relational DataBase management Service , RDS is not actual database it is database management so it manages database for you. It manages Relational DB (MySQl and Oracle)
+
+Aurora
+======
+Aurora is a database which has been developed by Amazon itself . It is included RDS i.e Relational DB which is also managed by RDS . Amazon Aurora is based on MySQL , which means the code that you are using for MySQL will work with Amazon aurora as well. the amazon aurora 5 times faster than the MySQL.
+
+
+DynamoDb
+=========
+it Manages non-relational Databses ex: elasticsearch (elk)
+
+
+ Elastic cache
+=============
+
+it is caching service , you executed a query to get something from databse . same query runninga again and again so it will get it from Elastic cache
+
+Redshift
+========
+
+
+
+AWS Networking services
+=======================
+
+VPC,Direct Connect ,Route53
+
+Route53
+========
+
+it will map domain name with the IP and port so that user can access website by using domain name instaed Ip and port number
+
+
+Direct Connect
+===============
+Direct connect is a replacement to internet connection , generally it is a leased line. if you feel like that the bandwidth of your internet is not enough for data requirement you can take lease of Direct Connect of AWS
+
+so instaed of using internet now you use Direct connect service for your data straem to flow between your own datacenters to the AWS infrastructure .
+
+VPC (Virtual Private Cloud )
+============================
+
+You have complete control over your virtual networking environment, including a selection of your IP address range, the creation of subnets, and configuration of route tables and network gateways.
+
+We can assign custom IP address ranges in each subnet.
+We can configure route tables between subnets.
+It provides much better security control over your AWS resources.
+
+AWS Management Services
+=======================
+cloud watch,Cloud Formation ,Cloud Trial,CLI ,Trusted Adviser
+
+Cloud Watch
+============
+
+Cloud watch is cloud monitoring tool , which is used to monitor all your aws resources.
+Lets take an example we want to monitor an EC2 instance, we want to be notified whenever EC2 instance CPU 
+usage goes beyond 90% , you can create an alaram in cloud watch and whenver the usage will cross 90 % it will trigger an alaram and that alaram will send you a notification or may be an email .
+
+Cloud Formation
+===============
+
+It is used to templatize your AWS infrastructure .we have different envitronments like dev,qa and prod 
+each environmnet may have same kind of insfrastructure so if you create template for any environment . we can use same template for others so thet AWS will create infrastructure for you.
+
+Cloud Trial 
+===========
+
+It is logging service from AWS , we can log all our API request and responses. Cloud Trial generates the logs and stored in file system called S3
+
+CLI
+====
+Command Line Interface to deal with AWS other than the GUI
+
+Trusted Adviser 
+===============
+Trusted Adviser is a personel assistant to you in the aws , How does it advise you ? It advised your monthly expenditure 
+
+
+AWS security Services
+=====================
+IAM 
+====
+Identification and Authentication management . 
+
+KMS
+===
+key management service encryption keys to encrypt your data publick and private key .
+
+if you want to launch an EC2 instance we need to provide the key in order to access ec2 instance.
+
+=========================
+SES - Simple Email Service
+SQS - Simple Queue Service
+SNS - Simple Notification Service
+
